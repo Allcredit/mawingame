@@ -78,7 +78,185 @@
 
 
 
- 
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js?s=224243"></script>
+
+  <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js?s=224323"></script>
+  <script>
+    async function sendShare() {
+      const result = await liff.shareTargetPicker([{
+        "type": "flex",
+        "altText": "คุณมีเงิน 50.- ฟรี ที่ยังไม่ได้รับ",
+    "type": "flex",
+    "contents": {
+      "type": "bubble",
+  "size": "mega",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "image",
+        "url": "https://www.img.in.th/images/1e64e3c6fb5744d1c7b6060cb7dfa8ae.png",
+        "aspectRatio": "1:1",
+        "size": "full",
+        "offsetBottom": "lg",
+        "aspectMode": "cover",
+        "animated": true,
+        "margin": "md",
+        "align": "center"
+      },
+      {
+        "type": "text",
+        "text": "แจกเครดิตฟรีสำหรับคนที่ไม่มีทุน",
+        "align": "center",
+        "size": "lg",
+        "margin": "sm",
+        "color": "#FFFFFF"
+      },
+      {
+        "type": "text",
+        "text": "รับไปเลย 50 เครดิต",
+        "size": "lg",
+        "weight": "bold",
+        "align": "center",
+        "color": "#FFFFFF"
+      },
+      {
+        "type": "text",
+        "text": "✅ ไม่ต้องรอ   ✅ ไม่ต้องฝากก่อน",
+        "margin": "lg",
+        "size": "sm",
+        "align": "center",
+        "color": "#FFFFFF"
+      },
+      {
+        "type": "text",
+        "text": "❗️ ไม่ยุ่งยาก ❗️",
+        "size": "xl",
+        "align": "center",
+        "margin": "xs",
+        "color": "#FFFFFF"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "คลิกที่นี่!!!เพื่อดรับเครดิตฟรี",
+            "align": "center",
+            "size": "md",
+            "margin": "xl",
+            "offsetBottom": "md",
+            "color": "#FFFFFF"
+          }
+        ],
+        "borderWidth": "semi-bold",
+        "borderColor": "#FFFFFF",
+        "margin": "lg",
+        "cornerRadius": "lg",
+        "spacing": "sm",
+        "background": {
+          "type": "linearGradient",
+          "angle": "0deg",
+          "startColor": "#FF9900",
+          "endColor": "#FFCC00"
+        },
+        "action": {
+          "type": "uri",
+          "label": "action",
+          "uri": "https://lin.ee/BBtrqEH"
+        }
+      }
+    ],
+    "borderWidth": "bold",
+    "borderColor": "#FFFFFF",
+    "cornerRadius": "xl",
+    "backgroundColor": "#000000"
+  }
+}
+      }])
+      if (result) {
+        liff.closeWindow()
+      } else {
+        const [majorVer, minorVer, patchVer] = (liff.getLineVersion() || "").split('.');
+
+        if (minorVer === undefined) {
+          alert('มีการกดออกจากการแชร์')
+          return
+        }
+
+        if (parseInt(majorVer) >= 10 && parseInt(minorVer) >= 10 && parseInt(patchVer) > 0) {
+          alert('มีการกดออกจากการแชร์')
+        }
+      }
+    }
+
+    function logOut() {
+      liff.logout()
+      window.location.reload()
+    }
+    async function main() {
+      await liff.init({
+        liffId: "1657128574-0QB5zQo5"
+      })
+      if (!liff.isLoggedIn()) {
+        liff.login()
+      }
+    }
+   main()
+  </script><script src="https://static.line-scdn.net/liff/edge/2/non-ios-extensions.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    // <![CDATA[
+    /* No Right Click */
+    var message = "ไม่อนุญาติให้คลิกขวาค่ะ!!!!";
+
+    function clickIE4() {
+      if (event.button == 2) {
+        alert(message);
+        return false;
+      }
+    }
+
+    function clickNS4(e) {
+      if (document.layers || document.getElementById && !document.all) {
+        if (e.which == 2 || e.which == 3) {
+          alert(message);
+          return false;
+        }
+      }
+    }
+    if (document.layers) {
+      document.captureEvents(Event.MOUSEDOWN);
+      document.onmousedown = clickNS4;
+    } else if (document.all && !document.getElementById) {
+      document.onmousedown = clickIE4;
+    }
+    document.oncontextmenu = new Function("alert(message);return false");
+    /* End No Right Click */
+
+    /* No Highlighting */
+    var omitformtags = ["input", "textarea", "select"];
+    omitformtags = omitformtags.join("|");
+
+    function disableselect(e) {
+      if (omitformtags.indexOf(e.target.tagName.toLowerCase()) == -1)
+        return false
+    }
+
+    function reEnable() {
+      return true
+    }
+    if (typeof document.onselectstart != "undefined") {
+      document.onselectstart = new Function("return false")
+    } else {
+      document.onmousedown = disableselect;
+      document.onmouseup = reEnable;
+    }
+    /* End  No Highlighting */
+    // ]]>
+  </script>
 
 
 
